@@ -31,6 +31,24 @@ const formatDateDDMMYYYY = (dateStr) => {
   }
 };
 
+// Helper function to clean notes HTML for print - limits text and removes problematic tags
+const cleanNotesForPrint = (notes, maxLength = 600) => {
+  if (!notes) return '';
+  return notes
+    .replace(/<\/?p[^>]*>/gi, ' ')
+    .replace(/<br\s*\/?>/gi, ' | ')
+    .replace(/<\/?strong>/gi, '')
+    .replace(/<\/?b>/gi, '')
+    .replace(/<\/?ul>/gi, '')
+    .replace(/<\/?li>/gi, ' • ')
+    .replace(/<[^>]*>/g, '')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .substring(0, maxLength);
+};
+
 export default function OrderPreview() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -161,16 +179,11 @@ export default function OrderPreview() {
             </div>
           </div>
           
-          <!-- Notes Section -->
-          <div style="border: 1px solid #3d2c1e; border-radius: 4px; margin-bottom: 10px;">
-            <div style="background: #3d2c1e; color: white; padding: 8px 12px; font-weight: bold; font-size: 12px;">Notes:</div>
-            <div style="padding: 12px; font-size: 14px; min-height: 60px;">
-              ${item.notes ? item.notes.replace(/<[^>]*>/g, ' ').replace(/&nbsp;/g, ' ') : `
-                ${item.category ? `• Category: ${item.category}<br>` : ''}
-                ${item.leather_code ? `• Leather: ${item.leather_code}<br>` : ''}
-                ${item.finish_code ? `• Finish: ${item.finish_code}<br>` : ''}
-                ${item.color_notes ? `• Color Notes: ${item.color_notes}<br>` : ''}
-              `}
+          <!-- Notes Section - Fixed height -->
+          <div class="notes-section" style="border: 1px solid #3d2c1e; border-radius: 4px; margin-bottom: 10px; max-height: 150px; overflow: hidden;">
+            <div style="background: #3d2c1e; color: white; padding: 6px 12px; font-weight: bold; font-size: 11px;">Notes:</div>
+            <div class="notes-content" style="padding: 8px 12px; font-size: 11px; max-height: 110px; overflow: hidden; line-height: 1.5;">
+              ${item.notes ? cleanNotesForPrint(item.notes) : `${item.category ? `Category: ${item.category} | ` : ''}${item.leather_code ? `Leather: ${item.leather_code} | ` : ''}${item.finish_code ? `Finish: ${item.finish_code} | ` : ''}${item.color_notes ? `Color: ${item.color_notes}` : ''}`}
             </div>
           </div>
           
@@ -229,6 +242,9 @@ export default function OrderPreview() {
           body { margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
           .page:last-child { page-break-after: auto; }
           img { max-width: 100%; }
+          /* Force notes section to not expand */
+          .notes-section { max-height: 150px !important; overflow: hidden !important; page-break-inside: avoid; }
+          .notes-content { max-height: 110px !important; overflow: hidden !important; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; }
         </style>
       </head>
       <body>
@@ -405,16 +421,11 @@ export default function OrderPreview() {
             </div>
           </div>
           
-          <!-- Notes Section -->
-          <div style="border: 1px solid #3d2c1e; border-radius: 4px; margin-bottom: 10px;">
-            <div style="background: #3d2c1e; color: white; padding: 8px 12px; font-weight: bold; font-size: 12px;">Notes:</div>
-            <div style="padding: 12px; font-size: 14px; min-height: 60px;">
-              ${item.notes ? item.notes.replace(/<[^>]*>/g, ' ').replace(/&nbsp;/g, ' ') : `
-                ${item.category ? `• Category: ${item.category}<br>` : ''}
-                ${item.leather_code ? `• Leather: ${item.leather_code}<br>` : ''}
-                ${item.finish_code ? `• Finish: ${item.finish_code}<br>` : ''}
-                ${item.color_notes ? `• Color Notes: ${item.color_notes}<br>` : ''}
-              `}
+          <!-- Notes Section - Fixed height -->
+          <div class="notes-section" style="border: 1px solid #3d2c1e; border-radius: 4px; margin-bottom: 10px; max-height: 150px; overflow: hidden;">
+            <div style="background: #3d2c1e; color: white; padding: 6px 12px; font-weight: bold; font-size: 11px;">Notes:</div>
+            <div class="notes-content" style="padding: 8px 12px; font-size: 11px; max-height: 110px; overflow: hidden; line-height: 1.5;">
+              ${item.notes ? cleanNotesForPrint(item.notes) : `${item.category ? `Category: ${item.category} | ` : ''}${item.leather_code ? `Leather: ${item.leather_code} | ` : ''}${item.finish_code ? `Finish: ${item.finish_code} | ` : ''}${item.color_notes ? `Color: ${item.color_notes}` : ''}`}
             </div>
           </div>
           
@@ -470,6 +481,9 @@ export default function OrderPreview() {
           body { margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
           .page:last-child { page-break-after: auto; }
           img { max-width: 100%; }
+          /* Force notes section to not expand */
+          .notes-section { max-height: 150px !important; overflow: hidden !important; page-break-inside: avoid; }
+          .notes-content { max-height: 110px !important; overflow: hidden !important; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; }
         </style>
       </head>
       <body>

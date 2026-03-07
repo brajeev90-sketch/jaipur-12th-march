@@ -142,16 +142,9 @@ export default function OrderPreview() {
             <!-- Main Product Image -->
             <div style="width: 75%;">
               ${mainImage 
-                ? `<img src="${mainImage}" alt="Product" style="width: 100%; height: 280px; object-fit: contain; border: 1px solid #ddd; border-radius: 4px;" />`
-                : `<div style="width: 100%; height: 280px; display: flex; align-items: center; justify-content: center; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; color: #888;">No Image</div>`
+                ? `<img src="${mainImage}" alt="Product" style="width: 100%; height: 320px; object-fit: contain; border: 1px solid #ddd; border-radius: 4px;" />`
+                : `<div style="width: 100%; height: 320px; display: flex; align-items: center; justify-content: center; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; color: #888;">No Image</div>`
               }
-              ${additionalImages.length > 0 ? `
-                <div style="display: flex; gap: 8px; margin-top: 10px;">
-                  ${additionalImages.slice(0, 4).map(img => `
-                    <img src="${img}" alt="Additional" style="width: 100px; height: 100px; object-fit: cover; border: 1px solid #ddd; border-radius: 4px;" />
-                  `).join('')}
-                </div>
-              ` : ''}
             </div>
             
             <!-- Material Swatches -->
@@ -384,16 +377,9 @@ export default function OrderPreview() {
             <!-- Main Product Image -->
             <div style="width: 75%;">
               ${mainImage 
-                ? `<img src="${mainImage}" alt="Product" style="width: 100%; height: 280px; object-fit: contain; border: 1px solid #ddd; border-radius: 4px;" />`
-                : `<div style="width: 100%; height: 280px; display: flex; align-items: center; justify-content: center; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; color: #888;">No Image</div>`
+                ? `<img src="${mainImage}" alt="Product" style="width: 100%; height: 320px; object-fit: contain; border: 1px solid #ddd; border-radius: 4px;" />`
+                : `<div style="width: 100%; height: 320px; display: flex; align-items: center; justify-content: center; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; color: #888;">No Image</div>`
               }
-              ${additionalImages.length > 0 ? `
-                <div style="display: flex; gap: 8px; margin-top: 10px;">
-                  ${additionalImages.slice(0, 4).map(img => `
-                    <img src="${img}" alt="Additional" style="width: 100px; height: 100px; object-fit: cover; border: 1px solid #ddd; border-radius: 4px;" />
-                  `).join('')}
-                </div>
-              ` : ''}
             </div>
             
             <!-- Material Swatches -->

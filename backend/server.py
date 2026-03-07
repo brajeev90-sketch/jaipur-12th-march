@@ -1649,6 +1649,33 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+@app.on_event("startup")
+async def startup_db_client():
+    """Create database indexes for better performance"""
+    try:
+        # Products indexes
+        await db.products.create_index("product_code")
+        await db.products.create_index("category")
+        
+        # Orders indexes
+        await db.orders.create_index("sales_order_ref")
+        await db.orders.create_index("buyer_name")
+        await db.orders.create_index("created_at")
+        await db.orders.create_index("status")
+        
+        # Quotations indexes
+        await db.quotations.create_index("reference")
+        await db.quotations.create_index("customer_name")
+        await db.quotations.create_index("created_at")
+        
+        # Libraries indexes
+        await db.leather.create_index("code")
+        await db.finish.create_index("code")
+        
+        logger.info("Database indexes created successfully")
+    except Exception as e:
+        logger.error(f"Error creating indexes: {e}")
+
 @app.on_event("shutdown")
 async def shutdown_db_client():
     client.close()

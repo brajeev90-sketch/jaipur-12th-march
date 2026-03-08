@@ -172,16 +172,16 @@ export default function OrderPreview() {
             </div>
           </div>
           
-          <!-- Notes Section - Fixed height -->
-          <div class="notes-section" style="border: 1px solid #3d2c1e; border-radius: 4px; margin-bottom: 10px; max-height: 150px; overflow: hidden;">
+          <!-- Notes Section - Full content, no truncation -->
+          <div class="notes-section" style="border: 1px solid #3d2c1e; border-radius: 4px; margin-bottom: 10px;">
             <div style="background: #3d2c1e; color: white; padding: 6px 12px; font-weight: bold; font-size: 11px;">Notes:</div>
-            <div class="notes-content" style="padding: 8px 12px; font-size: 11px; max-height: 110px; overflow: hidden; line-height: 1.5;">
-              ${item.notes ? cleanNotesForPrint(item.notes) : `${item.category ? `Category: ${item.category} | ` : ''}${item.leather_code ? `Leather: ${item.leather_code} | ` : ''}${item.finish_code ? `Finish: ${item.finish_code} | ` : ''}${item.color_notes ? `Color: ${item.color_notes}` : ''}`}
+            <div class="notes-content" style="padding: 8px 12px; font-size: 12px; line-height: 1.6;">
+              ${item.notes ? item.notes.replace(/<p>/gi, '<p style="margin: 4px 0;">').replace(/&nbsp;/g, ' ') : `${item.category ? `<p style="margin: 4px 0;">• Category: ${item.category}</p>` : ''}${item.leather_code ? `<p style="margin: 4px 0;">• Leather: ${item.leather_code}</p>` : ''}${item.finish_code ? `<p style="margin: 4px 0;">• Finish: ${item.finish_code}</p>` : ''}${item.color_notes ? `<p style="margin: 4px 0;">• Color Notes: ${item.color_notes}</p>` : ''}`}
             </div>
           </div>
           
-          <!-- Details Table -->
-          <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
+          <!-- Details Table - Always visible -->
+          <table style="width: 100%; border-collapse: collapse; font-size: 12px; page-break-inside: avoid;">
             <thead>
               <tr style="background: #3d2c1e; color: white;">
                 <th style="padding: 10px; text-align: left; border: 1px solid #3d2c1e;">ITEM CODE</th>
@@ -233,11 +233,14 @@ export default function OrderPreview() {
         <style>
           @page { size: A4; margin: 0; }
           body { margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+          .page { page-break-after: always; }
           .page:last-child { page-break-after: auto; }
           img { max-width: 100%; }
-          /* Force notes section to not expand */
-          .notes-section { max-height: 150px !important; overflow: hidden !important; page-break-inside: avoid; }
-          .notes-content { max-height: 110px !important; overflow: hidden !important; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; }
+          /* Allow notes to expand fully - content will flow to next page if needed */
+          .notes-section { page-break-inside: auto; }
+          .notes-content { line-height: 1.6; }
+          /* Ensure details table stays together */
+          table { page-break-inside: avoid; }
         </style>
       </head>
       <body>
@@ -407,16 +410,16 @@ export default function OrderPreview() {
             </div>
           </div>
           
-          <!-- Notes Section - Fixed height -->
-          <div class="notes-section" style="border: 1px solid #3d2c1e; border-radius: 4px; margin-bottom: 10px; max-height: 150px; overflow: hidden;">
+          <!-- Notes Section - Full content, no truncation -->
+          <div class="notes-section" style="border: 1px solid #3d2c1e; border-radius: 4px; margin-bottom: 10px;">
             <div style="background: #3d2c1e; color: white; padding: 6px 12px; font-weight: bold; font-size: 11px;">Notes:</div>
-            <div class="notes-content" style="padding: 8px 12px; font-size: 11px; max-height: 110px; overflow: hidden; line-height: 1.5;">
-              ${item.notes ? cleanNotesForPrint(item.notes) : `${item.category ? `Category: ${item.category} | ` : ''}${item.leather_code ? `Leather: ${item.leather_code} | ` : ''}${item.finish_code ? `Finish: ${item.finish_code} | ` : ''}${item.color_notes ? `Color: ${item.color_notes}` : ''}`}
+            <div class="notes-content" style="padding: 8px 12px; font-size: 12px; line-height: 1.6;">
+              ${item.notes ? item.notes.replace(/<p>/gi, '<p style="margin: 4px 0;">').replace(/&nbsp;/g, ' ') : `${item.category ? `<p style="margin: 4px 0;">• Category: ${item.category}</p>` : ''}${item.leather_code ? `<p style="margin: 4px 0;">• Leather: ${item.leather_code}</p>` : ''}${item.finish_code ? `<p style="margin: 4px 0;">• Finish: ${item.finish_code}</p>` : ''}${item.color_notes ? `<p style="margin: 4px 0;">• Color Notes: ${item.color_notes}</p>` : ''}`}
             </div>
           </div>
           
-          <!-- Details Table -->
-          <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
+          <!-- Details Table - Always visible -->
+          <table style="width: 100%; border-collapse: collapse; font-size: 12px; page-break-inside: avoid;">
             <thead>
               <tr style="background: #3d2c1e; color: white;">
                 <th style="padding: 10px; text-align: left; border: 1px solid #3d2c1e;">ITEM CODE</th>
@@ -465,11 +468,14 @@ export default function OrderPreview() {
         <style>
           @page { size: A4; margin: 0; }
           body { margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+          .page { page-break-after: always; }
           .page:last-child { page-break-after: auto; }
           img { max-width: 100%; }
-          /* Force notes section to not expand */
-          .notes-section { max-height: 150px !important; overflow: hidden !important; page-break-inside: avoid; }
-          .notes-content { max-height: 110px !important; overflow: hidden !important; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; }
+          /* Allow notes to expand fully - content will flow to next page if needed */
+          .notes-section { page-break-inside: auto; }
+          .notes-content { line-height: 1.6; }
+          /* Ensure details table stays together */
+          table { page-break-inside: avoid; }
         </style>
       </head>
       <body>

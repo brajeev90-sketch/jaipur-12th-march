@@ -109,7 +109,7 @@ export default function OrderPreview() {
       const additionalImages = item.product_image ? (item.images || []) : (item.images || []).slice(1);
       
       return `
-        <div class="page" style="page-break-after: always; padding: 5mm 8mm; box-sizing: border-box;">
+        <div class="item-container" style="padding: 5mm 8mm; box-sizing: border-box; page-break-after: always; page-break-inside: auto;">
           <!-- Header - Compact -->
           <div style="display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 8px; border-bottom: 2px solid #3d2c1e;">
             <img src="${logoUrl}" alt="JAIPUR" style="height: 60px; object-fit: contain;" />
@@ -172,16 +172,16 @@ export default function OrderPreview() {
             </div>
           </div>
           
-          <!-- Notes Section - Limited height to fit on page -->
-          <div class="notes-section" style="border: 1px solid #3d2c1e; border-radius: 4px; margin-bottom: 6px; max-height: 200px; overflow: hidden;">
+          <!-- Notes Section - Full content, flows to next page if needed -->
+          <div class="notes-section" style="border: 1px solid #3d2c1e; border-radius: 4px; margin-bottom: 6px;">
             <div style="background: #3d2c1e; color: white; padding: 3px 8px; font-weight: bold; font-size: 9px;">Notes:</div>
-            <div class="notes-content" style="padding: 4px 8px; font-size: 10px; line-height: 1.4; max-height: 170px; overflow: hidden;">
+            <div class="notes-content" style="padding: 4px 8px; font-size: 10px; line-height: 1.4;">
               ${item.notes ? item.notes.replace(/<p>/gi, '<p style="margin: 1px 0;">').replace(/&nbsp;/g, ' ') : `${item.category ? `<p style="margin: 1px 0;">• Category: ${item.category}</p>` : ''}${item.leather_code ? `<p style="margin: 1px 0;">• Leather: ${item.leather_code}</p>` : ''}${item.finish_code ? `<p style="margin: 1px 0;">• Finish: ${item.finish_code}</p>` : ''}${item.color_notes ? `<p style="margin: 1px 0;">• Color Notes: ${item.color_notes}</p>` : ''}`}
             </div>
           </div>
           
-          <!-- Details Table - Compact -->
-          <table style="width: 100%; border-collapse: collapse; font-size: 10px; page-break-inside: avoid;">
+          <!-- Details Table - Will go to next page if doesn't fit -->
+          <table style="width: 100%; border-collapse: collapse; font-size: 10px;">
             <thead>
               <tr style="background: #3d2c1e; color: white;">
                 <th style="padding: 6px; text-align: left; border: 1px solid #3d2c1e;">ITEM CODE</th>
@@ -233,14 +233,14 @@ export default function OrderPreview() {
         <style>
           @page { size: A4; margin: 0; }
           body { margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
-          .page { page-break-after: always; }
-          .page:last-child { page-break-after: auto; }
+          .item-container { page-break-after: always; }
+          .item-container:last-child { page-break-after: auto; }
           img { max-width: 100%; }
-          /* Allow notes to expand fully - content will flow to next page if needed */
+          /* Allow content to flow across pages */
           .notes-section { page-break-inside: auto; }
-          .notes-content { line-height: 1.6; }
-          /* Ensure details table stays together */
-          table { page-break-inside: avoid; }
+          .notes-content { line-height: 1.4; }
+          /* Table can break to next page */
+          table { page-break-before: auto; }
         </style>
       </head>
       <body>
@@ -347,7 +347,7 @@ export default function OrderPreview() {
       const additionalImages = item.product_image ? (item.images || []) : (item.images || []).slice(1);
       
       return `
-        <div class="page" style="page-break-after: always; padding: 5mm 8mm; box-sizing: border-box;">
+        <div class="item-container" style="padding: 5mm 8mm; box-sizing: border-box; page-break-after: always; page-break-inside: auto;">
           <!-- Header - Compact -->
           <div style="display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 8px; border-bottom: 2px solid #3d2c1e;">
             <img src="${logoUrl}" alt="JAIPUR" style="height: 60px; object-fit: contain;" />
@@ -410,16 +410,16 @@ export default function OrderPreview() {
             </div>
           </div>
           
-          <!-- Notes Section - Limited height to fit on page -->
-          <div class="notes-section" style="border: 1px solid #3d2c1e; border-radius: 4px; margin-bottom: 6px; max-height: 200px; overflow: hidden;">
+          <!-- Notes Section - Full content, flows to next page if needed -->
+          <div class="notes-section" style="border: 1px solid #3d2c1e; border-radius: 4px; margin-bottom: 6px;">
             <div style="background: #3d2c1e; color: white; padding: 3px 8px; font-weight: bold; font-size: 9px;">Notes:</div>
-            <div class="notes-content" style="padding: 4px 8px; font-size: 10px; line-height: 1.4; max-height: 170px; overflow: hidden;">
+            <div class="notes-content" style="padding: 4px 8px; font-size: 10px; line-height: 1.4;">
               ${item.notes ? item.notes.replace(/<p>/gi, '<p style="margin: 1px 0;">').replace(/&nbsp;/g, ' ') : `${item.category ? `<p style="margin: 1px 0;">• Category: ${item.category}</p>` : ''}${item.leather_code ? `<p style="margin: 1px 0;">• Leather: ${item.leather_code}</p>` : ''}${item.finish_code ? `<p style="margin: 1px 0;">• Finish: ${item.finish_code}</p>` : ''}${item.color_notes ? `<p style="margin: 1px 0;">• Color Notes: ${item.color_notes}</p>` : ''}`}
             </div>
           </div>
           
-          <!-- Details Table - Compact -->
-          <table style="width: 100%; border-collapse: collapse; font-size: 10px; page-break-inside: avoid;">
+          <!-- Details Table - Will go to next page if doesn't fit -->
+          <table style="width: 100%; border-collapse: collapse; font-size: 10px;">
             <thead>
               <tr style="background: #3d2c1e; color: white;">
                 <th style="padding: 6px; text-align: left; border: 1px solid #3d2c1e;">ITEM CODE</th>
@@ -468,14 +468,14 @@ export default function OrderPreview() {
         <style>
           @page { size: A4; margin: 0; }
           body { margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
-          .page { page-break-after: always; }
-          .page:last-child { page-break-after: auto; }
+          .item-container { page-break-after: always; }
+          .item-container:last-child { page-break-after: auto; }
           img { max-width: 100%; }
-          /* Allow notes to expand fully - content will flow to next page if needed */
+          /* Allow content to flow across pages */
           .notes-section { page-break-inside: auto; }
-          .notes-content { line-height: 1.6; }
-          /* Ensure details table stays together */
-          table { page-break-inside: avoid; }
+          .notes-content { line-height: 1.4; }
+          /* Table can break to next page */
+          table { page-break-before: auto; }
         </style>
       </head>
       <body>

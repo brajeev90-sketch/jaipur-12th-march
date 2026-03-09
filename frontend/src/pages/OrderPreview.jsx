@@ -205,8 +205,8 @@ export default function OrderPreview() {
             </tbody>
           </table>
           
-          <!-- NOTES SECTION AFTER TABLE -->
-          <div class="notes-section" style="border: 1px solid #3d2c1e; border-radius: 4px; margin-bottom: 4px;">
+          <!-- NOTES SECTION AFTER TABLE - NO HEIGHT LIMIT -->
+          <div class="notes-section" style="border: 1px solid #3d2c1e; border-radius: 4px;">
             <div style="background: #3d2c1e; color: white; padding: 2px 6px; font-weight: bold; font-size: 8px;">Notes:</div>
             <div class="notes-content" style="padding: 3px 6px; font-size: 8px; line-height: 1.2;">
               ${item.notes ? item.notes.replace(/<p>/gi, '<p style="margin: 0;">').replace(/&nbsp;/g, ' ') : `${item.category ? `<p style="margin: 0;">• Category: ${item.category}</p>` : ''}${item.leather_code ? `<p style="margin: 0;">• Leather: ${item.leather_code}</p>` : ''}${item.finish_code ? `<p style="margin: 0;">• Finish: ${item.finish_code}</p>` : ''}${item.color_notes ? `<p style="margin: 0;">• Color Notes: ${item.color_notes}</p>` : ''}`}
@@ -443,8 +443,8 @@ export default function OrderPreview() {
             </tbody>
           </table>
           
-          <!-- NOTES SECTION AFTER TABLE -->
-          <div class="notes-section" style="border: 1px solid #3d2c1e; border-radius: 4px; margin-bottom: 4px;">
+          <!-- NOTES SECTION AFTER TABLE - NO HEIGHT LIMIT -->
+          <div class="notes-section" style="border: 1px solid #3d2c1e; border-radius: 4px;">
             <div style="background: #3d2c1e; color: white; padding: 2px 6px; font-weight: bold; font-size: 8px;">Notes:</div>
             <div class="notes-content" style="padding: 3px 6px; font-size: 8px; line-height: 1.2;">
               ${item.notes ? item.notes.replace(/<p>/gi, '<p style="margin: 0;">').replace(/&nbsp;/g, ' ') : `${item.category ? `<p style="margin: 0;">• Category: ${item.category}</p>` : ''}${item.leather_code ? `<p style="margin: 0;">• Leather: ${item.leather_code}</p>` : ''}${item.finish_code ? `<p style="margin: 0;">• Finish: ${item.finish_code}</p>` : ''}${item.color_notes ? `<p style="margin: 0;">• Color Notes: ${item.color_notes}</p>` : ''}`}

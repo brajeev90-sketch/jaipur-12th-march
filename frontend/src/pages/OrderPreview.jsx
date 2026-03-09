@@ -109,7 +109,7 @@ export default function OrderPreview() {
       const additionalImages = item.product_image ? (item.images || []) : (item.images || []).slice(1);
       
       return `
-        <div class="item-container" style="padding: 5mm 8mm; box-sizing: border-box; page-break-after: always; page-break-inside: auto;">
+        <div class="item-container" style="padding: 5mm 8mm; box-sizing: border-box;">
           <!-- Header - Compact -->
           <div style="display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 8px; border-bottom: 2px solid #3d2c1e;">
             <img src="${logoUrl}" alt="JAIPUR" style="height: 60px; object-fit: contain;" />
@@ -179,7 +179,10 @@ export default function OrderPreview() {
               ${item.notes ? item.notes.replace(/<p>/gi, '<p style="margin: 1px 0;">').replace(/&nbsp;/g, ' ') : `${item.category ? `<p style="margin: 1px 0;">• Category: ${item.category}</p>` : ''}${item.leather_code ? `<p style="margin: 1px 0;">• Leather: ${item.leather_code}</p>` : ''}${item.finish_code ? `<p style="margin: 1px 0;">• Finish: ${item.finish_code}</p>` : ''}${item.color_notes ? `<p style="margin: 1px 0;">• Color Notes: ${item.color_notes}</p>` : ''}`}
             </div>
           </div>
-          
+        </div>
+        
+        <!-- Details Table Section - Separate div to allow page break -->
+        <div class="table-section" style="padding: 0 8mm 5mm 8mm; box-sizing: border-box; page-break-after: always;">
           <!-- Details Table - Will go to next page if doesn't fit -->
           <table style="width: 100%; border-collapse: collapse; font-size: 10px;">
             <thead>
@@ -216,7 +219,7 @@ export default function OrderPreview() {
           <!-- Footer - Compact -->
           <div style="display: flex; justify-content: space-between; margin-top: 8px; padding-top: 5px; border-top: 1px solid #ddd; font-size: 9px; color: #666;">
             <span>Buyer: ${order.buyer_name || '-'} PO: ${order.buyer_po_ref || '-'}</span>
-            <span>Page ${index + 1} of ${order.items.length}</span>
+            <span>Item ${index + 1} of ${order.items.length}</span>
           </div>
         </div>
       `;
@@ -233,14 +236,15 @@ export default function OrderPreview() {
         <style>
           @page { size: A4; margin: 0; }
           body { margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
-          .item-container { page-break-after: always; }
-          .item-container:last-child { page-break-after: auto; }
+          /* Content section - no forced page break */
+          .item-container { }
+          /* Table section - forces page break after */
+          .table-section { page-break-after: always; }
+          .table-section:last-child { page-break-after: auto; }
           img { max-width: 100%; }
-          /* Allow content to flow across pages */
-          .notes-section { page-break-inside: auto; }
+          /* Notes can flow naturally */
+          .notes-section { }
           .notes-content { line-height: 1.4; }
-          /* Table can break to next page */
-          table { page-break-before: auto; }
         </style>
       </head>
       <body>
@@ -347,7 +351,7 @@ export default function OrderPreview() {
       const additionalImages = item.product_image ? (item.images || []) : (item.images || []).slice(1);
       
       return `
-        <div class="item-container" style="padding: 5mm 8mm; box-sizing: border-box; page-break-after: always; page-break-inside: auto;">
+        <div class="item-container" style="padding: 5mm 8mm; box-sizing: border-box;">
           <!-- Header - Compact -->
           <div style="display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 8px; border-bottom: 2px solid #3d2c1e;">
             <img src="${logoUrl}" alt="JAIPUR" style="height: 60px; object-fit: contain;" />
@@ -417,7 +421,10 @@ export default function OrderPreview() {
               ${item.notes ? item.notes.replace(/<p>/gi, '<p style="margin: 1px 0;">').replace(/&nbsp;/g, ' ') : `${item.category ? `<p style="margin: 1px 0;">• Category: ${item.category}</p>` : ''}${item.leather_code ? `<p style="margin: 1px 0;">• Leather: ${item.leather_code}</p>` : ''}${item.finish_code ? `<p style="margin: 1px 0;">• Finish: ${item.finish_code}</p>` : ''}${item.color_notes ? `<p style="margin: 1px 0;">• Color Notes: ${item.color_notes}</p>` : ''}`}
             </div>
           </div>
-          
+        </div>
+        
+        <!-- Details Table Section - Separate div to allow page break -->
+        <div class="table-section" style="padding: 0 8mm 5mm 8mm; box-sizing: border-box; page-break-after: always;">
           <!-- Details Table - Will go to next page if doesn't fit -->
           <table style="width: 100%; border-collapse: collapse; font-size: 10px;">
             <thead>
@@ -454,7 +461,7 @@ export default function OrderPreview() {
           <!-- Footer - Compact -->
           <div style="display: flex; justify-content: space-between; margin-top: 8px; padding-top: 5px; border-top: 1px solid #ddd; font-size: 9px; color: #666;">
             <span>Buyer: ${order.buyer_name || '-'} PO: ${order.buyer_po_ref || '-'}</span>
-            <span>Page ${index + 1} of ${order.items.length}</span>
+            <span>Item ${index + 1} of ${order.items.length}</span>
           </div>
         </div>
       `;
@@ -468,14 +475,15 @@ export default function OrderPreview() {
         <style>
           @page { size: A4; margin: 0; }
           body { margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
-          .item-container { page-break-after: always; }
-          .item-container:last-child { page-break-after: auto; }
+          /* Content section - no forced page break */
+          .item-container { }
+          /* Table section - forces page break after */
+          .table-section { page-break-after: always; }
+          .table-section:last-child { page-break-after: auto; }
           img { max-width: 100%; }
-          /* Allow content to flow across pages */
-          .notes-section { page-break-inside: auto; }
+          /* Notes can flow naturally */
+          .notes-section { }
           .notes-content { line-height: 1.4; }
-          /* Table can break to next page */
-          table { page-break-before: auto; }
         </style>
       </head>
       <body>

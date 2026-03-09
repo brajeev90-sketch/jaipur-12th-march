@@ -172,18 +172,15 @@ export default function OrderPreview() {
             </div>
           </div>
           
-          <!-- Notes Section - Full content -->
-          <div class="notes-section" style="border: 1px solid #3d2c1e; border-radius: 4px; margin-bottom: 6px;">
+          <!-- Notes Section - LIMITED HEIGHT so table always fits -->
+          <div class="notes-section" style="border: 1px solid #3d2c1e; border-radius: 4px; margin-bottom: 6px; max-height: 280px; overflow: hidden;">
             <div style="background: #3d2c1e; color: white; padding: 3px 8px; font-weight: bold; font-size: 9px;">Notes:</div>
-            <div class="notes-content" style="padding: 4px 8px; font-size: 10px; line-height: 1.4;">
+            <div class="notes-content" style="padding: 4px 8px; font-size: 10px; line-height: 1.4; max-height: 250px; overflow: hidden;">
               ${item.notes ? item.notes.replace(/<p>/gi, '<p style="margin: 1px 0;">').replace(/&nbsp;/g, ' ') : `${item.category ? `<p style="margin: 1px 0;">• Category: ${item.category}</p>` : ''}${item.leather_code ? `<p style="margin: 1px 0;">• Leather: ${item.leather_code}</p>` : ''}${item.finish_code ? `<p style="margin: 1px 0;">• Finish: ${item.finish_code}</p>` : ''}${item.color_notes ? `<p style="margin: 1px 0;">• Color Notes: ${item.color_notes}</p>` : ''}`}
             </div>
           </div>
-        </div>
-        
-        <!-- TABLE ON NEW PAGE - Forces table to next page -->
-        <div style="page-break-before: always; padding: 5mm 8mm;">
-          <p style="font-size: 10px; color: #666; margin-bottom: 5px;">Continued - ${item.product_code || 'Item'}</p>
+          
+          <!-- Details Table - Always on same page -->
           <table style="width: 100%; border-collapse: collapse; font-size: 10px;">
             <thead>
               <tr style="background: #3d2c1e; color: white;">
@@ -413,18 +410,15 @@ export default function OrderPreview() {
             </div>
           </div>
           
-          <!-- Notes Section - Full content -->
-          <div class="notes-section" style="border: 1px solid #3d2c1e; border-radius: 4px; margin-bottom: 6px;">
+          <!-- Notes Section - LIMITED HEIGHT so table always fits -->
+          <div class="notes-section" style="border: 1px solid #3d2c1e; border-radius: 4px; margin-bottom: 6px; max-height: 280px; overflow: hidden;">
             <div style="background: #3d2c1e; color: white; padding: 3px 8px; font-weight: bold; font-size: 9px;">Notes:</div>
-            <div class="notes-content" style="padding: 4px 8px; font-size: 10px; line-height: 1.4;">
+            <div class="notes-content" style="padding: 4px 8px; font-size: 10px; line-height: 1.4; max-height: 250px; overflow: hidden;">
               ${item.notes ? item.notes.replace(/<p>/gi, '<p style="margin: 1px 0;">').replace(/&nbsp;/g, ' ') : `${item.category ? `<p style="margin: 1px 0;">• Category: ${item.category}</p>` : ''}${item.leather_code ? `<p style="margin: 1px 0;">• Leather: ${item.leather_code}</p>` : ''}${item.finish_code ? `<p style="margin: 1px 0;">• Finish: ${item.finish_code}</p>` : ''}${item.color_notes ? `<p style="margin: 1px 0;">• Color Notes: ${item.color_notes}</p>` : ''}`}
             </div>
           </div>
-        </div>
-        
-        <!-- TABLE ON NEW PAGE - Forces table to next page -->
-        <div style="page-break-before: always; padding: 5mm 8mm;">
-          <p style="font-size: 10px; color: #666; margin-bottom: 5px;">Continued - ${item.product_code || 'Item'}</p>
+          
+          <!-- Details Table - Always on same page -->
           <table style="width: 100%; border-collapse: collapse; font-size: 10px;">
             <thead>
               <tr style="background: #3d2c1e; color: white;">

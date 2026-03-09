@@ -172,15 +172,15 @@ export default function OrderPreview() {
             </div>
           </div>
           
-          <!-- Notes Section - FULL content, will flow to next page -->
-          <div class="notes-section" style="border: 1px solid #3d2c1e; border-radius: 4px; margin-bottom: 6px;">
+          <!-- Notes Section - LIMITED to ensure table fits -->
+          <div class="notes-section" style="border: 1px solid #3d2c1e; border-radius: 4px; margin-bottom: 6px; max-height: 220px; overflow: hidden;">
             <div style="background: #3d2c1e; color: white; padding: 3px 8px; font-weight: bold; font-size: 9px;">Notes:</div>
-            <div class="notes-content" style="padding: 4px 8px; font-size: 10px; line-height: 1.4;">
+            <div class="notes-content" style="padding: 4px 8px; font-size: 9px; line-height: 1.3; max-height: 190px; overflow: hidden;">
               ${item.notes ? item.notes.replace(/<p>/gi, '<p style="margin: 1px 0;">').replace(/&nbsp;/g, ' ') : `${item.category ? `<p style="margin: 1px 0;">• Category: ${item.category}</p>` : ''}${item.leather_code ? `<p style="margin: 1px 0;">• Leather: ${item.leather_code}</p>` : ''}${item.finish_code ? `<p style="margin: 1px 0;">• Finish: ${item.finish_code}</p>` : ''}${item.color_notes ? `<p style="margin: 1px 0;">• Color Notes: ${item.color_notes}</p>` : ''}`}
             </div>
           </div>
           
-          <!-- Details Table - Comes after notes -->
+          <!-- Details Table - MUST FIT on same page -->
           <table style="width: 100%; border-collapse: collapse; font-size: 10px;">
             <thead>
               <tr style="background: #3d2c1e; color: white;">
@@ -410,15 +410,15 @@ export default function OrderPreview() {
             </div>
           </div>
           
-          <!-- Notes Section - FULL content, will flow to next page -->
-          <div class="notes-section" style="border: 1px solid #3d2c1e; border-radius: 4px; margin-bottom: 6px;">
+          <!-- Notes Section - LIMITED to ensure table fits -->
+          <div class="notes-section" style="border: 1px solid #3d2c1e; border-radius: 4px; margin-bottom: 6px; max-height: 220px; overflow: hidden;">
             <div style="background: #3d2c1e; color: white; padding: 3px 8px; font-weight: bold; font-size: 9px;">Notes:</div>
-            <div class="notes-content" style="padding: 4px 8px; font-size: 10px; line-height: 1.4;">
+            <div class="notes-content" style="padding: 4px 8px; font-size: 9px; line-height: 1.3; max-height: 190px; overflow: hidden;">
               ${item.notes ? item.notes.replace(/<p>/gi, '<p style="margin: 1px 0;">').replace(/&nbsp;/g, ' ') : `${item.category ? `<p style="margin: 1px 0;">• Category: ${item.category}</p>` : ''}${item.leather_code ? `<p style="margin: 1px 0;">• Leather: ${item.leather_code}</p>` : ''}${item.finish_code ? `<p style="margin: 1px 0;">• Finish: ${item.finish_code}</p>` : ''}${item.color_notes ? `<p style="margin: 1px 0;">• Color Notes: ${item.color_notes}</p>` : ''}`}
             </div>
           </div>
           
-          <!-- Details Table - Comes after notes -->
+          <!-- Details Table - MUST FIT on same page -->
           <table style="width: 100%; border-collapse: collapse; font-size: 10px;">
             <thead>
               <tr style="background: #3d2c1e; color: white;">

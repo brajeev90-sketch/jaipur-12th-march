@@ -109,112 +109,112 @@ export default function OrderPreview() {
       const additionalImages = item.product_image ? (item.images || []) : (item.images || []).slice(1);
       
       return `
-        <div class="item-container" style="padding: 3mm 5mm; box-sizing: border-box;">
-          <!-- Header - More Compact -->
-          <div style="display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 5px; border-bottom: 2px solid #3d2c1e;">
-            <img src="${logoUrl}" alt="JAIPUR" style="height: 50px; object-fit: contain;" />
-            <table style="border: 1px solid #3d2c1e; border-collapse: collapse; font-size: 8px;">
+        <div class="item-container" style="padding: 2mm 4mm; box-sizing: border-box;">
+          <!-- Header - Very Compact -->
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 3px; border-bottom: 1px solid #3d2c1e;">
+            <img src="${logoUrl}" alt="JAIPUR" style="height: 40px; object-fit: contain;" />
+            <table style="border: 1px solid #3d2c1e; border-collapse: collapse; font-size: 6px;">
               <tr style="border-bottom: 1px solid #3d2c1e;">
-                <td style="padding: 2px 5px; background: #f5f0eb; font-weight: bold; border-right: 1px solid #3d2c1e;">ENTRY DATE</td>
-                <td style="padding: 2px 5px; min-width: 70px;">${formatDateDDMMYYYY(order.entry_date)}</td>
+                <td style="padding: 1px 3px; background: #f5f0eb; font-weight: bold; border-right: 1px solid #3d2c1e;">ENTRY DATE</td>
+                <td style="padding: 1px 3px; min-width: 50px;">${formatDateDDMMYYYY(order.entry_date)}</td>
               </tr>
               <tr style="border-bottom: 1px solid #3d2c1e;">
-                <td style="padding: 2px 5px; background: #f5f0eb; font-weight: bold; border-right: 1px solid #3d2c1e;">INFORMED TO FACTORY</td>
-                <td style="padding: 2px 5px;">${formatDateDDMMYYYY(order.factory_inform_date || order.entry_date)}</td>
+                <td style="padding: 1px 3px; background: #f5f0eb; font-weight: bold; border-right: 1px solid #3d2c1e;">INFORMED TO FACTORY</td>
+                <td style="padding: 1px 3px;">${formatDateDDMMYYYY(order.factory_inform_date || order.entry_date)}</td>
               </tr>
               <tr style="border-bottom: 1px solid #3d2c1e;">
-                <td style="padding: 2px 5px; background: #f5f0eb; font-weight: bold; border-right: 1px solid #3d2c1e;">FACTORY</td>
-                <td style="padding: 2px 5px;">${order.factory || '-'}</td>
+                <td style="padding: 1px 3px; background: #f5f0eb; font-weight: bold; border-right: 1px solid #3d2c1e;">FACTORY</td>
+                <td style="padding: 1px 3px;">${order.factory || '-'}</td>
               </tr>
               <tr style="border-bottom: 1px solid #3d2c1e;">
-                <td style="padding: 2px 5px; background: #f5f0eb; font-weight: bold; border-right: 1px solid #3d2c1e;">SALES ORDER REF</td>
-                <td style="padding: 2px 5px; font-family: monospace;">${order.sales_order_ref || '-'}</td>
+                <td style="padding: 1px 3px; background: #f5f0eb; font-weight: bold; border-right: 1px solid #3d2c1e;">SALES ORDER REF</td>
+                <td style="padding: 1px 3px; font-family: monospace;">${order.sales_order_ref || '-'}</td>
               </tr>
               <tr>
-                <td style="padding: 2px 5px; background: #f5f0eb; font-weight: bold; border-right: 1px solid #3d2c1e;">BUYER PO</td>
-                <td style="padding: 2px 5px; font-family: monospace;">${order.buyer_po_ref || '-'}</td>
+                <td style="padding: 1px 3px; background: #f5f0eb; font-weight: bold; border-right: 1px solid #3d2c1e;">BUYER PO</td>
+                <td style="padding: 1px 3px; font-family: monospace;">${order.buyer_po_ref || '-'}</td>
               </tr>
             </table>
           </div>
           
-          <!-- Images Section - 5% Smaller -->
-          <div style="display: flex; gap: 8px; padding: 5px 0;">
-            <!-- Main Product Image - Smaller -->
+          <!-- Images Section - Compact -->
+          <div style="display: flex; gap: 5px; padding: 3px 0;">
+            <!-- Main Product Image -->
             <div style="width: 75%;">
               ${mainImage 
-                ? `<img src="${mainImage}" alt="Product" style="width: 95%; height: 220px; object-fit: contain; border: 1px solid #ddd; border-radius: 4px;" />`
-                : `<div style="width: 95%; height: 220px; display: flex; align-items: center; justify-content: center; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; color: #888;">No Image</div>`
+                ? `<img src="${mainImage}" alt="Product" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #ddd; border-radius: 3px;" />`
+                : `<div style="width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; background: #f5f5f5; border: 1px solid #ddd; border-radius: 3px; color: #888; font-size: 6px;">No Image</div>`
               }
             </div>
             
-            <!-- Material Swatches - Smaller -->
+            <!-- Material Swatches -->
             <div style="width: 25%;">
               ${item.leather_image || item.leather_code ? `
-                <div style="margin-bottom: 5px;">
-                  <p style="font-size: 7px; color: #666; margin-bottom: 2px;">${item.leather_code || ''}</p>
+                <div style="margin-bottom: 3px;">
+                  <p style="font-size: 5px; color: #666; margin: 0;">${item.leather_code || ''}</p>
                   ${item.leather_image 
-                    ? `<img src="${item.leather_image}" alt="Leather" style="width: 95%; height: 70px; object-fit: cover; border: 1px solid #ddd; border-radius: 4px;" />`
-                    : `<div style="width: 95%; height: 70px; background: #8B4513; border-radius: 4px;"></div>`
+                    ? `<img src="${item.leather_image}" alt="Leather" style="width: 100%; height: 60px; object-fit: cover; border: 1px solid #ddd; border-radius: 3px;" />`
+                    : `<div style="width: 100%; height: 60px; background: #8B4513; border-radius: 3px;"></div>`
                   }
-                  <p style="font-size: 7px; text-align: center; margin-top: 2px;">LEATHER ${item.leather_code || ''}</p>
+                  <p style="font-size: 5px; text-align: center; margin: 1px 0;">LEATHER ${item.leather_code || ''}</p>
                 </div>
               ` : ''}
               ${item.finish_image || item.finish_code ? `
                 <div>
-                  <p style="font-size: 7px; color: #666; margin-bottom: 2px;">${item.finish_code || ''}</p>
+                  <p style="font-size: 5px; color: #666; margin: 0;">${item.finish_code || ''}</p>
                   ${item.finish_image 
-                    ? `<img src="${item.finish_image}" alt="Finish" style="width: 95%; height: 70px; object-fit: cover; border: 1px solid #ddd; border-radius: 4px;" />`
-                    : `<div style="width: 95%; height: 70px; background: #d4a574; border-radius: 4px;"></div>`
+                    ? `<img src="${item.finish_image}" alt="Finish" style="width: 100%; height: 60px; object-fit: cover; border: 1px solid #ddd; border-radius: 3px;" />`
+                    : `<div style="width: 100%; height: 60px; background: #d4a574; border-radius: 3px;"></div>`
                   }
-                  <p style="font-size: 7px; text-align: center; margin-top: 2px;">FINISH ${item.finish_code || ''}</p>
+                  <p style="font-size: 5px; text-align: center; margin: 1px 0;">FINISH ${item.finish_code || ''}</p>
                 </div>
               ` : ''}
             </div>
           </div>
           
           <!-- ITEM DETAILS TABLE FIRST -->
-          <table style="width: 100%; border-collapse: collapse; font-size: 9px; margin-bottom: 5px;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 6px; margin-bottom: 3px;">
             <thead>
               <tr style="background: #3d2c1e; color: white;">
-                <th style="padding: 4px; text-align: left; border: 1px solid #3d2c1e;">ITEM CODE</th>
-                <th style="padding: 4px; text-align: left; border: 1px solid #3d2c1e;">DESCRIPTION</th>
-                <th style="padding: 4px; text-align: center; border: 1px solid #3d2c1e;" colspan="3">SIZE (cm)</th>
-                <th style="padding: 4px; text-align: center; border: 1px solid #3d2c1e;">CBM</th>
-                <th style="padding: 4px; text-align: center; border: 1px solid #3d2c1e;">Qty</th>
+                <th style="padding: 2px; text-align: left; border: 1px solid #3d2c1e;">ITEM CODE</th>
+                <th style="padding: 2px; text-align: left; border: 1px solid #3d2c1e;">DESCRIPTION</th>
+                <th style="padding: 2px; text-align: center; border: 1px solid #3d2c1e;" colspan="3">SIZE (cm)</th>
+                <th style="padding: 2px; text-align: center; border: 1px solid #3d2c1e;">CBM</th>
+                <th style="padding: 2px; text-align: center; border: 1px solid #3d2c1e;">Qty</th>
               </tr>
-              <tr style="background: #3d2c1e; color: white; font-size: 8px;">
+              <tr style="background: #3d2c1e; color: white; font-size: 5px;">
                 <th style="border: 1px solid #3d2c1e;"></th>
                 <th style="border: 1px solid #3d2c1e;"></th>
-                <th style="padding: 2px; border: 1px solid #3d2c1e;">H</th>
-                <th style="padding: 2px; border: 1px solid #3d2c1e;">D</th>
-                <th style="padding: 2px; border: 1px solid #3d2c1e;">W</th>
+                <th style="padding: 1px; border: 1px solid #3d2c1e;">H</th>
+                <th style="padding: 1px; border: 1px solid #3d2c1e;">D</th>
+                <th style="padding: 1px; border: 1px solid #3d2c1e;">W</th>
                 <th style="border: 1px solid #3d2c1e;"></th>
                 <th style="border: 1px solid #3d2c1e;"></th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td style="padding: 4px; border: 1px solid #3d2c1e; font-family: monospace; font-weight: bold;">${item.product_code || '-'}</td>
-                <td style="padding: 4px; border: 1px solid #3d2c1e; font-size: 8px;">${item.description || '-'}</td>
-                <td style="padding: 4px; border: 1px solid #3d2c1e; text-align: center;">${item.height_cm || 0}</td>
-                <td style="padding: 4px; border: 1px solid #3d2c1e; text-align: center;">${item.depth_cm || 0}</td>
-                <td style="padding: 4px; border: 1px solid #3d2c1e; text-align: center;">${item.width_cm || 0}</td>
-                <td style="padding: 4px; border: 1px solid #3d2c1e; text-align: center;">${cbm}</td>
-                <td style="padding: 4px; border: 1px solid #3d2c1e; text-align: center; font-weight: bold;">${item.quantity || 1} Pcs</td>
+                <td style="padding: 2px; border: 1px solid #3d2c1e; font-family: monospace; font-weight: bold;">${item.product_code || '-'}</td>
+                <td style="padding: 2px; border: 1px solid #3d2c1e; font-size: 5px;">${item.description || '-'}</td>
+                <td style="padding: 2px; border: 1px solid #3d2c1e; text-align: center;">${item.height_cm || 0}</td>
+                <td style="padding: 2px; border: 1px solid #3d2c1e; text-align: center;">${item.depth_cm || 0}</td>
+                <td style="padding: 2px; border: 1px solid #3d2c1e; text-align: center;">${item.width_cm || 0}</td>
+                <td style="padding: 2px; border: 1px solid #3d2c1e; text-align: center;">${cbm}</td>
+                <td style="padding: 2px; border: 1px solid #3d2c1e; text-align: center; font-weight: bold;">${item.quantity || 1} Pcs</td>
               </tr>
             </tbody>
           </table>
           
           <!-- NOTES SECTION AFTER TABLE - NO HEIGHT LIMIT -->
-          <div class="notes-section" style="border: 1px solid #3d2c1e; border-radius: 4px;">
-            <div style="background: #3d2c1e; color: white; padding: 2px 6px; font-weight: bold; font-size: 8px;">Notes:</div>
-            <div class="notes-content" style="padding: 3px 6px; font-size: 8px; line-height: 1.2;">
+          <div class="notes-section" style="border: 1px solid #3d2c1e; border-radius: 3px;">
+            <div style="background: #3d2c1e; color: white; padding: 1px 4px; font-weight: bold; font-size: 5px;">Notes:</div>
+            <div class="notes-content" style="padding: 2px 4px; font-size: 6px; line-height: 1.15;">
               ${item.notes ? item.notes.replace(/<p>/gi, '<p style="margin: 0;">').replace(/&nbsp;/g, ' ') : `${item.category ? `<p style="margin: 0;">• Category: ${item.category}</p>` : ''}${item.leather_code ? `<p style="margin: 0;">• Leather: ${item.leather_code}</p>` : ''}${item.finish_code ? `<p style="margin: 0;">• Finish: ${item.finish_code}</p>` : ''}${item.color_notes ? `<p style="margin: 0;">• Color Notes: ${item.color_notes}</p>` : ''}`}
             </div>
           </div>
           
           <!-- Footer -->
-          <div style="display: flex; justify-content: space-between; margin-top: 4px; padding-top: 3px; border-top: 1px solid #ddd; font-size: 8px; color: #666;">
+          <div style="display: flex; justify-content: space-between; margin-top: 2px; padding-top: 2px; border-top: 1px solid #ddd; font-size: 5px; color: #666;">
             <span>Buyer: ${order.buyer_name || '-'} PO: ${order.buyer_po_ref || '-'}</span>
             <span>Item ${index + 1} of ${order.items.length}</span>
           </div>
@@ -347,112 +347,112 @@ export default function OrderPreview() {
       const additionalImages = item.product_image ? (item.images || []) : (item.images || []).slice(1);
       
       return `
-        <div class="item-container" style="padding: 3mm 5mm; box-sizing: border-box;">
-          <!-- Header - More Compact -->
-          <div style="display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 5px; border-bottom: 2px solid #3d2c1e;">
-            <img src="${logoUrl}" alt="JAIPUR" style="height: 50px; object-fit: contain;" />
-            <table style="border: 1px solid #3d2c1e; border-collapse: collapse; font-size: 8px;">
+        <div class="item-container" style="padding: 2mm 4mm; box-sizing: border-box;">
+          <!-- Header - Very Compact -->
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 3px; border-bottom: 1px solid #3d2c1e;">
+            <img src="${logoUrl}" alt="JAIPUR" style="height: 40px; object-fit: contain;" />
+            <table style="border: 1px solid #3d2c1e; border-collapse: collapse; font-size: 6px;">
               <tr style="border-bottom: 1px solid #3d2c1e;">
-                <td style="padding: 2px 5px; background: #f5f0eb; font-weight: bold; border-right: 1px solid #3d2c1e;">ENTRY DATE</td>
-                <td style="padding: 2px 5px; min-width: 70px;">${formatDateDDMMYYYY(order.entry_date)}</td>
+                <td style="padding: 1px 3px; background: #f5f0eb; font-weight: bold; border-right: 1px solid #3d2c1e;">ENTRY DATE</td>
+                <td style="padding: 1px 3px; min-width: 50px;">${formatDateDDMMYYYY(order.entry_date)}</td>
               </tr>
               <tr style="border-bottom: 1px solid #3d2c1e;">
-                <td style="padding: 2px 5px; background: #f5f0eb; font-weight: bold; border-right: 1px solid #3d2c1e;">INFORMED TO FACTORY</td>
-                <td style="padding: 2px 5px;">${formatDateDDMMYYYY(order.factory_inform_date || order.entry_date)}</td>
+                <td style="padding: 1px 3px; background: #f5f0eb; font-weight: bold; border-right: 1px solid #3d2c1e;">INFORMED TO FACTORY</td>
+                <td style="padding: 1px 3px;">${formatDateDDMMYYYY(order.factory_inform_date || order.entry_date)}</td>
               </tr>
               <tr style="border-bottom: 1px solid #3d2c1e;">
-                <td style="padding: 2px 5px; background: #f5f0eb; font-weight: bold; border-right: 1px solid #3d2c1e;">FACTORY</td>
-                <td style="padding: 2px 5px;">${order.factory || '-'}</td>
+                <td style="padding: 1px 3px; background: #f5f0eb; font-weight: bold; border-right: 1px solid #3d2c1e;">FACTORY</td>
+                <td style="padding: 1px 3px;">${order.factory || '-'}</td>
               </tr>
               <tr style="border-bottom: 1px solid #3d2c1e;">
-                <td style="padding: 2px 5px; background: #f5f0eb; font-weight: bold; border-right: 1px solid #3d2c1e;">SALES ORDER REF</td>
-                <td style="padding: 2px 5px; font-family: monospace;">${order.sales_order_ref || '-'}</td>
+                <td style="padding: 1px 3px; background: #f5f0eb; font-weight: bold; border-right: 1px solid #3d2c1e;">SALES ORDER REF</td>
+                <td style="padding: 1px 3px; font-family: monospace;">${order.sales_order_ref || '-'}</td>
               </tr>
               <tr>
-                <td style="padding: 2px 5px; background: #f5f0eb; font-weight: bold; border-right: 1px solid #3d2c1e;">BUYER PO</td>
-                <td style="padding: 2px 5px; font-family: monospace;">${order.buyer_po_ref || '-'}</td>
+                <td style="padding: 1px 3px; background: #f5f0eb; font-weight: bold; border-right: 1px solid #3d2c1e;">BUYER PO</td>
+                <td style="padding: 1px 3px; font-family: monospace;">${order.buyer_po_ref || '-'}</td>
               </tr>
             </table>
           </div>
           
-          <!-- Images Section - 5% Smaller -->
-          <div style="display: flex; gap: 8px; padding: 5px 0;">
-            <!-- Main Product Image - Smaller -->
+          <!-- Images Section - Compact -->
+          <div style="display: flex; gap: 5px; padding: 3px 0;">
+            <!-- Main Product Image -->
             <div style="width: 75%;">
               ${mainImage 
-                ? `<img src="${mainImage}" alt="Product" style="width: 95%; height: 220px; object-fit: contain; border: 1px solid #ddd; border-radius: 4px;" />`
-                : `<div style="width: 95%; height: 220px; display: flex; align-items: center; justify-content: center; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; color: #888;">No Image</div>`
+                ? `<img src="${mainImage}" alt="Product" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #ddd; border-radius: 3px;" />`
+                : `<div style="width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; background: #f5f5f5; border: 1px solid #ddd; border-radius: 3px; color: #888; font-size: 6px;">No Image</div>`
               }
             </div>
             
-            <!-- Material Swatches - Smaller -->
+            <!-- Material Swatches -->
             <div style="width: 25%;">
               ${item.leather_image || item.leather_code ? `
-                <div style="margin-bottom: 5px;">
-                  <p style="font-size: 7px; color: #666; margin-bottom: 2px;">${item.leather_code || ''}</p>
+                <div style="margin-bottom: 3px;">
+                  <p style="font-size: 5px; color: #666; margin: 0;">${item.leather_code || ''}</p>
                   ${item.leather_image 
-                    ? `<img src="${item.leather_image}" alt="Leather" style="width: 95%; height: 70px; object-fit: cover; border: 1px solid #ddd; border-radius: 4px;" />`
-                    : `<div style="width: 95%; height: 70px; background: #8B4513; border-radius: 4px;"></div>`
+                    ? `<img src="${item.leather_image}" alt="Leather" style="width: 100%; height: 60px; object-fit: cover; border: 1px solid #ddd; border-radius: 3px;" />`
+                    : `<div style="width: 100%; height: 60px; background: #8B4513; border-radius: 3px;"></div>`
                   }
-                  <p style="font-size: 7px; text-align: center; margin-top: 2px;">LEATHER ${item.leather_code || ''}</p>
+                  <p style="font-size: 5px; text-align: center; margin: 1px 0;">LEATHER ${item.leather_code || ''}</p>
                 </div>
               ` : ''}
               ${item.finish_image || item.finish_code ? `
                 <div>
-                  <p style="font-size: 7px; color: #666; margin-bottom: 2px;">${item.finish_code || ''}</p>
+                  <p style="font-size: 5px; color: #666; margin: 0;">${item.finish_code || ''}</p>
                   ${item.finish_image 
-                    ? `<img src="${item.finish_image}" alt="Finish" style="width: 95%; height: 70px; object-fit: cover; border: 1px solid #ddd; border-radius: 4px;" />`
-                    : `<div style="width: 95%; height: 70px; background: #d4a574; border-radius: 4px;"></div>`
+                    ? `<img src="${item.finish_image}" alt="Finish" style="width: 100%; height: 60px; object-fit: cover; border: 1px solid #ddd; border-radius: 3px;" />`
+                    : `<div style="width: 100%; height: 60px; background: #d4a574; border-radius: 3px;"></div>`
                   }
-                  <p style="font-size: 7px; text-align: center; margin-top: 2px;">FINISH ${item.finish_code || ''}</p>
+                  <p style="font-size: 5px; text-align: center; margin: 1px 0;">FINISH ${item.finish_code || ''}</p>
                 </div>
               ` : ''}
             </div>
           </div>
           
           <!-- ITEM DETAILS TABLE FIRST -->
-          <table style="width: 100%; border-collapse: collapse; font-size: 9px; margin-bottom: 5px;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 6px; margin-bottom: 3px;">
             <thead>
               <tr style="background: #3d2c1e; color: white;">
-                <th style="padding: 4px; text-align: left; border: 1px solid #3d2c1e;">ITEM CODE</th>
-                <th style="padding: 4px; text-align: left; border: 1px solid #3d2c1e;">DESCRIPTION</th>
-                <th style="padding: 4px; text-align: center; border: 1px solid #3d2c1e;" colspan="3">SIZE (cm)</th>
-                <th style="padding: 4px; text-align: center; border: 1px solid #3d2c1e;">CBM</th>
-                <th style="padding: 4px; text-align: center; border: 1px solid #3d2c1e;">Qty</th>
+                <th style="padding: 2px; text-align: left; border: 1px solid #3d2c1e;">ITEM CODE</th>
+                <th style="padding: 2px; text-align: left; border: 1px solid #3d2c1e;">DESCRIPTION</th>
+                <th style="padding: 2px; text-align: center; border: 1px solid #3d2c1e;" colspan="3">SIZE (cm)</th>
+                <th style="padding: 2px; text-align: center; border: 1px solid #3d2c1e;">CBM</th>
+                <th style="padding: 2px; text-align: center; border: 1px solid #3d2c1e;">Qty</th>
               </tr>
-              <tr style="background: #3d2c1e; color: white; font-size: 8px;">
+              <tr style="background: #3d2c1e; color: white; font-size: 5px;">
                 <th style="border: 1px solid #3d2c1e;"></th>
                 <th style="border: 1px solid #3d2c1e;"></th>
-                <th style="padding: 2px; border: 1px solid #3d2c1e;">H</th>
-                <th style="padding: 2px; border: 1px solid #3d2c1e;">D</th>
-                <th style="padding: 2px; border: 1px solid #3d2c1e;">W</th>
+                <th style="padding: 1px; border: 1px solid #3d2c1e;">H</th>
+                <th style="padding: 1px; border: 1px solid #3d2c1e;">D</th>
+                <th style="padding: 1px; border: 1px solid #3d2c1e;">W</th>
                 <th style="border: 1px solid #3d2c1e;"></th>
                 <th style="border: 1px solid #3d2c1e;"></th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td style="padding: 4px; border: 1px solid #3d2c1e; font-family: monospace; font-weight: bold;">${item.product_code || '-'}</td>
-                <td style="padding: 4px; border: 1px solid #3d2c1e; font-size: 8px;">${item.description || '-'}</td>
-                <td style="padding: 4px; border: 1px solid #3d2c1e; text-align: center;">${item.height_cm || 0}</td>
-                <td style="padding: 4px; border: 1px solid #3d2c1e; text-align: center;">${item.depth_cm || 0}</td>
-                <td style="padding: 4px; border: 1px solid #3d2c1e; text-align: center;">${item.width_cm || 0}</td>
-                <td style="padding: 4px; border: 1px solid #3d2c1e; text-align: center;">${cbm}</td>
-                <td style="padding: 4px; border: 1px solid #3d2c1e; text-align: center; font-weight: bold;">${item.quantity || 1} Pcs</td>
+                <td style="padding: 2px; border: 1px solid #3d2c1e; font-family: monospace; font-weight: bold;">${item.product_code || '-'}</td>
+                <td style="padding: 2px; border: 1px solid #3d2c1e; font-size: 5px;">${item.description || '-'}</td>
+                <td style="padding: 2px; border: 1px solid #3d2c1e; text-align: center;">${item.height_cm || 0}</td>
+                <td style="padding: 2px; border: 1px solid #3d2c1e; text-align: center;">${item.depth_cm || 0}</td>
+                <td style="padding: 2px; border: 1px solid #3d2c1e; text-align: center;">${item.width_cm || 0}</td>
+                <td style="padding: 2px; border: 1px solid #3d2c1e; text-align: center;">${cbm}</td>
+                <td style="padding: 2px; border: 1px solid #3d2c1e; text-align: center; font-weight: bold;">${item.quantity || 1} Pcs</td>
               </tr>
             </tbody>
           </table>
           
           <!-- NOTES SECTION AFTER TABLE - NO HEIGHT LIMIT -->
-          <div class="notes-section" style="border: 1px solid #3d2c1e; border-radius: 4px;">
-            <div style="background: #3d2c1e; color: white; padding: 2px 6px; font-weight: bold; font-size: 8px;">Notes:</div>
-            <div class="notes-content" style="padding: 3px 6px; font-size: 8px; line-height: 1.2;">
+          <div class="notes-section" style="border: 1px solid #3d2c1e; border-radius: 3px;">
+            <div style="background: #3d2c1e; color: white; padding: 1px 4px; font-weight: bold; font-size: 5px;">Notes:</div>
+            <div class="notes-content" style="padding: 2px 4px; font-size: 6px; line-height: 1.15;">
               ${item.notes ? item.notes.replace(/<p>/gi, '<p style="margin: 0;">').replace(/&nbsp;/g, ' ') : `${item.category ? `<p style="margin: 0;">• Category: ${item.category}</p>` : ''}${item.leather_code ? `<p style="margin: 0;">• Leather: ${item.leather_code}</p>` : ''}${item.finish_code ? `<p style="margin: 0;">• Finish: ${item.finish_code}</p>` : ''}${item.color_notes ? `<p style="margin: 0;">• Color Notes: ${item.color_notes}</p>` : ''}`}
             </div>
           </div>
           
           <!-- Footer -->
-          <div style="display: flex; justify-content: space-between; margin-top: 4px; padding-top: 3px; border-top: 1px solid #ddd; font-size: 8px; color: #666;">
+          <div style="display: flex; justify-content: space-between; margin-top: 2px; padding-top: 2px; border-top: 1px solid #ddd; font-size: 5px; color: #666;">
             <span>Buyer: ${order.buyer_name || '-'} PO: ${order.buyer_po_ref || '-'}</span>
             <span>Item ${index + 1} of ${order.items.length}</span>
           </div>

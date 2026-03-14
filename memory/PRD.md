@@ -92,4 +92,4 @@ Build a web-based software for "JAIPUR - A fine wood furniture company" to gener
 - Password: `admin123`
 
 ## API Base URL
-- Preview: `https://wood-catalog-2.preview.emergentagent.com`
+- Preview: `https://pdf-factory-6.preview.emergentagent.com`
